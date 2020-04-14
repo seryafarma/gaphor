@@ -118,9 +118,9 @@ class GIdleThread:
         """
         exc_info = self._exc_info
 
-        exctype, value = exc_info[:2]
+        exctype, value, tb = exc_info
         if exctype:
-            raise exctype(value)
+            raise exctype(value).with_traceback(tb)
 
     def __generator_executer(self):
         try:
